@@ -1,0 +1,83 @@
+:root {
+    --black-bean: #440d0fff; 
+    --sinopia: #cc3f0cff; 
+    --earth-yellow: #f4b266ff; 
+    --olivine: #8cba80ff; 
+    --hunter-green: #33673bff; 
+}
+
+.recipes-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+    justify-content: center;
+    padding: 20px;
+}
+
+.recipe {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    width: 500px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.recipe img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover; /* ovo osigurava da slike zadrže omjer i budu izrezane ako su prevelike */
+    border-radius: 10px 10px 0 0;
+}
+
+h1{
+    text-align: center;
+    background-color: var(--earth-yellow);
+    padding: 50px;
+    font-size:40px;
+}
+
+.recipe h2 {
+    font-size: 1.5em;
+    margin: 10px 0;
+}
+
+.recipe p {
+    font-size: 1em;
+    color: #666;
+}
+
+.text{
+    margin-top: 30px;
+    margin-left: 20px;
+    font-size: 1.5em;
+}
+
+#sortForm {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+    margin: 20px 0;
+    padding-left: 20px;
+}
+
+form label {
+    font-size: 1.2em;
+    padding-right: 10px;
+    margin: 0;
+}
+
+form select {
+    padding: 5px;
+    font-size: 1em;
+    width: 10%;
+    margin: 0;
+}
+
+.found{
+    text-align: center;
+    font-weight: 600;
+    margin: 83px 0;
+}

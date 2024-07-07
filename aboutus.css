@@ -1,0 +1,134 @@
+.about-us{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 100%;
+    height: auto;
+    gap: 115px;
+    padding: 50px 150px;
+    background-color: var(--earth-yellow);
+    margin-bottom: 50px;
+}
+
+.about-us .family-photo{
+    width: 50%;
+    height: auto;
+}
+
+.intro-text{
+    width: 60%;
+    height: auto;
+    gap: 32px;
+}
+
+.about-us .mainTitle{
+    gap: 10px;
+    opacity: 0px;
+}
+
+.large-text{
+    margin-bottom: 32px;
+    font-size: 2.3em;
+}
+
+.medium-text{
+    margin-bottom: 32px;
+    font-size: 1.4em;
+    line-height: 1.8em;
+}
+
+/* family */
+
+.about-family {
+    padding: 40px 20px;
+    text-align: center;
+}
+
+h2{
+    text-align: center;
+    font-size: 2.5em;
+}
+
+.about-member {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.member-photo {
+    width: 30%;
+    max-width: 500px;
+    height: auto;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+    margin-left: 50px;
+}
+
+.member-info {
+    text-align: center;
+    padding: 70px;
+}
+
+@media (max-width: 1400px) {
+    .member-photo {
+        width: 50%;
+    }
+    .large-text{
+        margin-bottom: 32px;
+        font-size: 1.8em;
+    }
+    
+    .medium-text{
+        margin-bottom: 32px;
+        font-size: 1.2em;
+        line-height: 1.4em;
+    }
+    
+}
+
+@media (max-width: 1024px) {
+    .about-us {
+        flex-direction: column; /* Promjena smjera za manje ekrane */
+        padding: 50px 20px; /* Smanjen padding */
+        gap: 20px; /* Smanjen gap između elemenata */
+    }
+
+    .about-us .family-photo {
+        width: 100%; /* Puni width za manje ekrane */
+        margin-bottom: 20px; /* Dodan razmak između slike i teksta */
+    }
+
+    .about-family .about-member:nth-child(2) {
+        flex-direction: column-reverse; /* Promjena smjera za drugo dijete za ekrane manje od 768px */
+    }
+
+    .intro-text {
+        width: 100%; /* Puni width za manje ekrane */
+        margin-top: 20px; /* Povećan razmak između slike i teksta */
+    }
+
+    .large-text {
+        font-size: 2em; /* Smanjena veličina fonta za manje ekrane */
+    }
+
+    .medium-text {
+        font-size: 1.2em; /* Smanjena veličina fonta za manje ekrane */
+        line-height: 1.6em; /* Smanjen line-height za bolju čitljivost */
+    }
+    .about-member {
+        flex-direction: column; /* Promjena smjera za manje ekrane */
+    }
+
+    .member-photo {
+        width: 50%; /* Prilagođena širina slike za manje ekrane */
+        max-width: 100%; /* Održava maksimalnu širinu slike */
+        margin-left: 0; /* Uklonjen margin-left za središnje poravnanje */
+    }
+
+    .member-info {
+        padding: 20px; /* Smanjeno punjenje za manje ekrane */
+    }
+}

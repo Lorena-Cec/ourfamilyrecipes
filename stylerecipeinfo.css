@@ -1,0 +1,102 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+.header {
+    background-color: #f2f2f2;
+    padding: 10px 20px;
+    text-align: center;
+}
+.title{
+    background-color: var(--earth-yellow);
+    text-align: center;
+    padding: 20px 0;
+}
+.recipe-container{
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.recipe-image {
+    width: 50%;
+    margin-left: 250px;
+    margin-right: 50px;
+}
+.recipe-image img {
+    width: 100%;
+    height: 500px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+.recipe-details {
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.ingredients {
+    width: 50%;
+    height: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 5px;
+}
+.description {
+    width: 50%;
+    margin-bottom: 20px;
+}
+.description ul {
+    list-style-type: none;
+    padding: 0;
+}
+.description li, .ingredients li {
+    margin-bottom: 10px;
+    font-size: 1em;
+    line-height: 1.5em;
+}
+.ingredients ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.large-text{
+    margin-bottom: 32px;
+    font-size: 2.3em;
+}
+
+.medium-text{
+    margin-bottom: 32px;
+    font-size: 1.2em;
+    line-height: 1.8em;
+}
+.save p, .save button{
+    width: fit-content;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 1.4em;
+    background-color: var(--earth-yellow);
+}
+.save{
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    margin-bottom: 50px;
+}
+
+.save p{
+    font-weight: 600;
+}
+
+form .regular-button {
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    margin-top: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    float: none;
+}
