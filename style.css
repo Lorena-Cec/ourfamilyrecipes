@@ -361,7 +361,7 @@ form .regular-button {
     float: none;
 }
 
-.login-container, .register-container, .form-container {
+.login-container, .register-container, .form-container, .edit-recipe-container {
     width: 50%;
     margin: 50px auto;
     border-radius: 5px;

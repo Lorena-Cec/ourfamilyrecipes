@@ -50,21 +50,20 @@ $conn->close();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo $name; ?></title>
+    <title><?php echo htmlspecialchars($name); ?></title>
     <link rel="stylesheet" href="stylerecipeinfo.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
     <?php include('includes/header.php'); ?>
     <div class="title">
-        <h2 class="large-text"><?php echo $name; ?></h2>
-        <h2 class="text"><?php echo $short_description; ?></h2>
+        <h2 class="large-text"><?php echo htmlspecialchars($name); ?></h2>
+        <h2 class="text"><?php echo htmlspecialchars($short_description); ?></h2>
     </div>
     <div class="recipe-container">
         <div class="recipe-details">
-            
             <div class="recipe-image">
-                <img src="<?php echo $picture_url; ?>" alt="<?php echo $name; ?>">
+                <img src="<?php echo htmlspecialchars($picture_url); ?>" alt="<?php echo htmlspecialchars($name); ?>">
             </div>
 
             <div class="ingredients">
@@ -80,30 +79,43 @@ $conn->close();
             </div>
         </div>
         <div class="description">
-                <h2 class="text">Description:</h2>
-                <ul class="medium-text">
-                    <?php
-                    $long_description_array = explode("\n", $long_description);
-                    foreach ($long_description_array as $long_description) {
-                        echo "<li>" . htmlspecialchars($long_description) . "</li>";
-                    }
-                    ?>
-                </ul>
-            </div>
+            <h2 class="text">Description:</h2>
+            <ul class="medium-text">
+                <?php
+                $long_description_array = explode("\n", $long_description);
+                foreach ($long_description_array as $line) {
+                    echo "<li>" . htmlspecialchars($line) . "</li>";
+                }
+                ?>
+            </ul>
+        </div>
     </div>
-    <div class="save">
-        <?php if (!$saved): ?>
-        <form id="save-recipe-form">
-            <input type="hidden" name="recipe_id" value="<?php echo $id; ?>">
-            <button type="submit" class="button">Save Recipe</button>
-        </form>
-    <?php else: ?>
-        <p>Recipe already saved.</p>
-    <?php endif; ?>
-    </div>                
-    
+    <div class="actions">
+        <?php if (isset($_SESSION['username']) && $_SESSION['username'] === 'admin'): ?>
+            <form id="edit-recipe-form" method="GET" action="editrecipe.php">
+                <input type="hidden" name="id" value="<?php echo $id; ?>">
+                <button type="submit" class="regular-button">Edit Recipe</button>
+            </form>
+            <form id="delete-recipe-form" method="POST" action="deleterecipe.php">
+                <input type="hidden" name="recipe_id" value="<?php echo $id; ?>">
+                <button type="submit" class="regular-button">Delete Recipe</button>
+            </form>
+        <?php else: ?>
+            <?php if (!$saved): ?>
+                <form id="save-recipe-form">
+                    <input type="hidden" name="recipe_id" value="<?php echo $id; ?>">
+                    <button type="submit" class="regular-button">Save Recipe</button>
+                </form>
+            <?php else: ?>
+                <div class="save">
+                    <p>Recipe already saved.</p>
+                </div>
+            <?php endif; ?>
+        <?php endif; ?>
+    </div>
+
     <?php include('includes/footer.php'); ?>
-    
+
     <script>
     $(document).ready(function() {
         $('#save-recipe-form').submit(function(event) {
@@ -124,6 +136,33 @@ $conn->close();
                 }
             });
         });
+
+        $('#delete-recipe-form').submit(function(event) {
+            console.log('Delete form submitted.');
+            event.preventDefault();
+            if (confirm('Are you sure you want to delete this recipe?')) {
+                $.ajax({
+                    url: 'deleterecipe.php',
+                    type: 'POST',
+                    data: $(this).serialize(),
+                    success: function(response) {
+                        console.log('Response:', response); // Dodajemo ispis odgovora u konzolu
+                        if (response === 'success') {
+                            alert('Recipe deleted successfully.');
+                            window.location.href = 'recipes.php';
+                        } else {
+                            alert('Error deleting recipe. Please check console for details.');
+                            console.error('Error:', response); // Dodajemo detaljan ispis greške u konzolu
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        alert('Error deleting recipe. Please check console for details.');
+                        console.error('AJAX Error:', status, error); // Dodajemo detaljan ispis AJAX greške u konzolu
+                    }
+                });
+            }
+        });
+
     });
     </script>
 </body>

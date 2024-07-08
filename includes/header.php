@@ -26,9 +26,10 @@ $isAdmin = $isLoggedIn && isset($_SESSION['username']) && $_SESSION['username'] 
             <li><a href="home.php">Home</a></li>
             <li><a href="recipes.php">Recipes</a></li>
             <li><a href="aboutus.php">About us</a></li>
-            <li><a href="profile.php">Profile</a></li>
             <?php if ($isAdmin): ?>
                 <li><a href="addrecipes.php">Add recipes</a></li>
+            <?php else: ?>
+                <li><a href="profile.php">Profile</a></li>
             <?php endif; ?>
             <?php if ($isLoggedIn): ?>
                 <li><a href="logout.php">Logout</a></li>
